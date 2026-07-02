@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Premium | Malca's Nexus</title>
+    <style>
+        /* CONFIGURACIÓN GENERAL E IGUALDAD ESTÉTICA */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('assets/images/fondo_principal.png'); 
+            background-size: cover;         
+            background-position: center;    
+            background-repeat: no-repeat;   
+            background-attachment: fixed;   
+            background-color: #0b0c10;      
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: rgba(19, 26, 34, 0.85);
+            border-bottom: 1px solid rgba(102, 252, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar .container {
+            display: table;
+            width: 100%;
+        }
+
+        .nav-logo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #66fcf1; 
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #66fcf1;
+        }
+
+        /* ENCABEZADO DEL CATÁLOGO */
+        .catalog-header {
+            padding: 60px 0 30px 0;
+            text-align: center;
+        }
+
+        .catalog-header h1 {
+            font-size: 3rem;
+            color: #66fcf1;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .catalog-header p {
+            font-size: 1.1rem;
+            color: #c5c6c7;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* CUADRÍCULA INTERACTIVA DEL CATÁLOGO (CSS GRID) */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            padding-bottom: 80px;
+            margin-top: 30px;
+        }
+
+        /* TARJETA INTERACTIVA DE ARTÍCULO */
+        .product-card {
+            background-color: rgba(31, 40, 51, 0.5);
+            border: 1px solid rgba(102, 252, 241, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        /* Contenedor de la Imagen para controlar el Zoom */
+        .product-image-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: rgba(11, 12, 16, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen sin deformarla */
+            transition: transform 0.4s ease;
+        }
+
+        .product-info {
+            padding: 20px 15px;
+            border-top: 1px solid rgba(197, 198, 199, 0.1);
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        /* EFECTOS DE INTERACTIVIDAD (HOVER) */
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #66fcf1;
+            background-color: rgba(31, 40, 51, 0.8);
+            box-shadow: 0 10px 25px rgba(102, 252, 241, 0.25);
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1); /* Efecto zoom en la foto del artículo */
+        }
+
+        .product-card:hover h3 {
+            color: #66fcf1; /* El texto se ilumina en cian */
+        }
+
+        /* RESPONSIVO PARA CELULARES */
+        @media (max-width: 768px) {
+            .navbar .container {
+                display: block;
+                text-align: center;
+            }
+            .nav-logo {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .nav-menu {
+                display: block;
+                text-align: center;
+            }
+            .nav-menu a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            .catalog-header h1 {
+                font-size: 2.2rem;
+            }
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            .product-image-wrapper {
+                height: 150px;
+            }
+            .product-info h3 {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">MALCA'S NEXUS</a>
+            <div class="nav-menu">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html" style="color: #66fcf1;">Catálogo</a>
+                <a href="index.html#luminar">LuminAR</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CUERPO DEL CATÁLOGO -->
+    <div class="container">
+        
+        <header class="catalog-header">
+            <h1>Artículos Personalizados</h1>
+            <p>Selecciona un articulo para verificar la informacion correspondiente.</p>
+        </header>
+
+        <!-- GRILLA CON LOS 10 ARTÍCULOS INTERACTIVOS -->
+        <main class="catalog-grid">
+
+            <!-- 1. CAMISETAS -->
+            <div class="product-card" onclick="location.href='#camisetas'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/camisetas.png" alt="Camisetas Personalizadas">
+                </div>
+                <div class="product-info">
+                    <h3>Camisetas</h3>
+                </div>
+            </div>
+
+            <!-- 2. TAZAS -->
+            <div class="product-card" onclick="location.href='#tazas'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/tazas.png" alt="Tazas Personalizadas">
+                </div>
+                <div class="product-info">
+                    <h3>Tazas</h3>
+                </div>
+            </div>
+
+            <!-- 3. BOTELLAS -->
+            <div class="product-card" onclick="location.href='#botellas'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/botellas.png" alt="Botellas Personalizadas">
+                </div>
+                <div class="product-info">
+                    <h3>Botellas</h3>
+                </div>
+            </div>
+
+            <!-- 4. JARRAS -->
+            <div class="product-card" onclick="location.href='#jarras'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/jarras.png" alt="Jarras Personalizadas">
+                </div>
+                <div class="product-info">
+                    <h3>Jarras</h3>
+                </div>
+            </div>
+
+            <!-- 5. GORRAS -->
+            <div class="product-card" onclick="location.href='#gorras'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/gorras.png" alt="Gorras Personalizadas">
+                </div>
+                <div class="product-info">
+                    <h3>Gorras</h3>
+                </div>
+            </div>
+
+            <!-- 6. CUADROS DECORATIVOS -->
+            <div class="product-card" onclick="location.href='#cuadros'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/productos/cuadros.png" alt="Cuadros Decorativos">
+                </div>
+                <div class="product-info">
+                    <h3>Cuadros Decorativos</h3>
+                </div>
+            </div>
+
+            <!-- 7. HOODIES -->
+            <div class="product-card" onclick="location.href='#hoodies'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/productos/hoodies.png" alt="Hoodies Personalizados">
+                </div>
+                <div class="product-info">
+                    <h3>Hoodies</h3>
+                </div>
+            </div>
+
+            <!-- 8. MOUSEPADS -->
+            <div class="product-card" onclick="location.href='#mousepads'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/productos/mousepads.png" alt="Mousepads Personalizados">
+                </div>
+                <div class="product-info">
+                    <h3>Mousepads</h3>
+                </div>
+            </div>
+
+            <!-- 9. LANYARDS -->
+            <div class="product-card" onclick="location.href='#lanyards'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/productos/lanyards.png" alt="Lanyards Personalizados">
+                </div>
+                <div class="product-info">
+                    <h3>Lanyards</h3>
+                </div>
+            </div>
+
+            <!-- 10. STICKERS -->
+            <div class="product-card" onclick="location.href='#stickers'">
+                <div class="product-image-wrapper">
+                    <img src="assets/images/productos/stickers.png" alt="Stickers Personalizados">
+                </div>
+                <div class="product-info">
+                    <h3>Stickers</h3>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
