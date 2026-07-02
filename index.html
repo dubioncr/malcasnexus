@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malca's Nexus | El portal a tus productos personalizados del futuro</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('assets/images/fondo_principal.png'); 
+            background-size: cover;         
+            background-position: center;    
+            background-repeat: no-repeat;   
+            background-attachment: fixed;   
+            background-color: #0b0c10;      
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            background-color: rgba(19, 26, 34, 0.85);
+            border-bottom: 1px solid rgba(102, 252, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar .container {
+            display: table;
+            width: 100%;
+        }
+
+        .nav-logo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #66fcf1; 
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #66fcf1;
+        }
+
+        .hero {
+            padding: 100px 0 40px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #66fcf1; 
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #c5c6c7; 
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .nexus-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 50px;
+            padding-bottom: 100px;
+        }
+
+        .nexus-card {
+            flex: 1;
+            text-decoration: none; 
+            color: #ffffff;
+            background-color: rgba(31, 40, 51, 0.4); 
+            border: 2px solid rgba(102, 252, 241, 0.2);
+            border-radius: 16px;
+            padding: 60px 30px;
+            text-align: center;
+            backdrop-filter: blur(4px); 
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nexus-card:hover {
+            transform: translateY(-10px); 
+            background-color: rgba(102, 252, 241, 0.15); 
+            border-color: #66fcf1; 
+            box-shadow: 0 15px 40px rgba(102, 252, 241, 0.3);
+        }
+
+        .nexus-card h2 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+            transition: color 0.3s ease;
+        }
+
+        .nexus-card:hover h2 {
+            color: #66fcf1; 
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                display: block;
+                text-align: center;
+            }
+            .nav-logo {
+                display: block;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .nav-menu {
+                display: block;
+                text-align: center;
+            }
+            .nav-menu a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+            .hero { padding: 70px 0 30px 0; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .nexus-grid {
+                flex-direction: column;
+                gap: 20px;
+                padding-bottom: 50px;
+            }
+            .nexus-card { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-logo">MALCA'S NEXUS</div>
+            <div class="nav-menu">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="#luminar">LuminAR</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="inicio">
+        <header class="hero">
+            <h1>Malca's Nexus</h1>
+            <p>Tu mundo personalizado, tu realidad aumentada</p>
+        </header>
+
+        <main class="nexus-grid">
+            <!-- Abre tu nueva página de catálogo -->
+            <a href="catalogo.html" class="nexus-card">
+                <h2>Artículos Personalizados</h2>
+            </a>
+
+            <!-- Enlace para tus futuros desarrollos WebAR -->
+            <a href="luminar.html" class="nexus-card">
+                <h2>LuminAR</h2>
+            </a>
+        </main>
+    </div>
+
+</body>
+</html>
